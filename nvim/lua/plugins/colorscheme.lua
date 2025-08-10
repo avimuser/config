@@ -1,7 +1,7 @@
 return {
-    "EdenEast/nightfox.nvim", 
+    "savq/melange-nvim",
     priority = 1000,
     init = function()
-        vim.cmd("colorscheme terafox")
+        vim.cmd("colorscheme melange")
     end
 }
