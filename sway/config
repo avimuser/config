@@ -1,0 +1,52 @@
+set $base           292522
+set $surface        5e5145
+set $text           ECE1D7
+set $red            BD8183
+set $rose           C1A78E
+
+set $mod Mod4
+
+set $term foot
+set $menu wmenu-run -if "Adwaita Mono 14" -N $base -n $text -m $text -S $rose -s $base
+set $browser librewolf
+
+output * bg $HOME/Pictures/wallpaper.png fill #000000
+
+exec swayidle -wC $HOME/.config/sway/swayidle
+
+input type:touchpad {
+    dwt enabled
+    tap enabled
+    natural_scroll enabled
+    middle_emulation enabled
+}
+
+input type:keyboard {
+    xkb_layout "us"
+}
+
+default_border pixel 1
+
+##### STATUS BAR #####
+bar {
+    position top
+    font Adwaita Mono 11
+    status_command $HOME/.config/sway/bar.py
+
+    colors {
+        statusline $text
+        background $base
+        focused_workspace $base $base $text
+        inactive_workspace $base $base $surface
+    }
+}
+
+set $base           #25211f
+# target                 title     bg     text   indicator  border
+client.focused           $rose     $rose  $base  $rose      $rose
+client.focused_inactive  $surface  $rose  $base  $base      $surface
+client.unfocused         $surface  $base  $text  $base      $surface
+client.urgent            $text     $base  $text  $red       $red
+
+include /etc/sway/config.d/*
+include ./*.sway
